@@ -1,0 +1,3 @@
+<?php
+include("../cnx.php");
+?>
