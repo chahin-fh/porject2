@@ -5,68 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
-    <title>Document</title>
+    <title>Formulaire d'inscription</title>
 </head>
 <body>
     <main>
         <form action="main.php" onsubmit="return verif()" method="post">
-            <h1>Formulaire d'inscription</h1>
-            <label for="">Type :</label>
-            <select name="" id="type" required>
-                <option value="etudiant">Etudiant</option>
+            <h3>Formulaire d'inscription</h3>
+
+            <label for="type">Type :</label>
+            <select name="type" id="type" required>
+                <option value="">Sélectionnez votre type</option>
+                <option value="etudiant">Étudiant</option>
                 <option value="professeur">Professeur</option>
             </select>
-            <p id="e1"  class="e"></p>
-            <label for="">Nom et compler:</label>
-            <input type="text" id="mp1" name ="mp" placeholder="Entrez voutre nom" required>
-            <p id="e2"  class="e"></p>
-            <label for="">Email:</label>
-            <input type="email" id="mp2" placeholder="Entrez votre adresse email" required>
-            <p id="e3"  class="e"></p>
-            <label for="">Numero de Telephone:</label>
-            <input type="text" id="mail" name="email" placeholder="Entrez votre numéro de téléphone" required><br>
-            <p id="e4"  class="e"></p>
-            <label for="">Adresse:</label>
-            <input type="text" placeholder="Entrez votre adresse">
-            <p></p>
-            <label for="">Ville:</label>
-            <input type="text" name="" id="" placeholder="Entrez votre ville" required>
-            <p></p>
-            <label for="">Code Postal:</label>
-            <input type="text" placeholder="Entrez votre code postal" required>
-            <p></p>
-            <label for="">Pays:</label>
-            <input type="text" placeholder="Entrez votre pays" required>
-            <p></p>
-            <label for="">Département:</label>
-            <input type="text" placeholder="Entrez votre département" required>
-            <p></p>
+
+            <label for="name">Nom et prénom :</label>
+            <input type="text" id="name" name="name" placeholder="Entrez votre nom complet" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required>
+
+            <label for="phone">Numéro de Téléphone :</label>
+            <input type="text" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required>
+
+            <label for="address">Adresse :</label>
+            <input type="text" id="address" name="address" placeholder="Entrez votre adresse">
+
+            <label for="city">Ville :</label>
+            <input type="text" id="city" name="city" placeholder="Entrez votre ville" required>
+
+            <label for="postal_code">Code Postal :</label>
+            <input type="text" id="postal_code" name="postal_code" placeholder="Entrez votre code postal" required>
+
+            <label for="country">Pays :</label>
+            <input type="text" id="country" name="country" placeholder="Entrez votre pays" required>
+
+            <label for="department">Département :</label>
+            <input type="text" id="department" name="department" placeholder="Entrez votre département" required>
+
             <div id="etudiant_fields" style="display: none;">
                 <label for="date_of_birth">Date de Naissance :</label>
                 <input type="date" id="date_of_birth" name="date_of_birth">
-                <p></p>
-                <label for="academic_level">Niveau d'Étude:</label>
+
+                <label for="academic_level">Niveau d'Étude :</label>
                 <input type="text" id="academic_level" name="academic_level" placeholder="Entrez votre niveau d'étude">
-                <p></p>
+
                 <label for="enrollment_date">Date d'Inscription :</label>
                 <input type="date" id="enrollment_date" name="enrollment_date">
-                <p></p>
             </div>
+
             <div id="professeur_fields" style="display: none;">
                 <label for="academic_title">Titre Académique :</label>
                 <input type="text" id="academic_title" name="academic_title" placeholder="Entrez votre titre académique">
+
                 <label for="hire_date">Date d'Embauche :</label>
                 <input type="date" id="hire_date" name="hire_date">
+
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+                <input type="checkbox" id="ch" onclick="affiche_pass()">
+                <label for="show_password">Afficher le mot de passe</label>
             </div>
 
-            <div>
-                <input type="checkbox" name="" class="ch" id="ch" onclick="affiche_pass()"><label for=""> Afficher les mots de passe</label>
-            </div>
-            <br>
-            <p id="e5"  class="e"></p>
-            <h4 style="color: green; text-align: center;" id="msg"></h4>
-            <input type="submit" value="S'inscrire" class="b"><br>
-            <p class="d">Déjà inscrit? <a href="../connexion/index.html">Connectez-vous ici</a></p>
+            <input type="submit" value="S'inscrire" class="b">
+
+            <p class="d">Déjà inscrit ? <a href="../connexion/index.html">Connectez-vous ici</a></p>
         </form>
     </main>
 </body>

@@ -124,14 +124,30 @@ function affiche_pass(){
         mot_de_passe2.type="password";
     }
 }
-document.getElementById('type').addEventListener('change', function() {
-     if (this.value === 'etudiant') {
-         document.getElementById('etudiant_fields').style.display = 'block';
-         document.getElementById('professeur_fields').style.display = 'none';
-        } else if (this.value === 'professeur') {
-            document.getElementById('etudiant_fields').style.display = 'none';
-            document.getElementById('professeur_fields').style.display = 'block';
-        }else {
-            document.getElementById('etudiant_fields').style.display = 'none';
-            document.getElementById('professeur_fields').style.display = 'none';
-        } });
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('type').addEventListener('change', function() {
+        let typeValue = this.value;
+        let etudiantFields = document.getElementById('etudiant_fields');
+        let professeurFields = document.getElementById('professeur_fields');
+
+        if (typeValue === 'etudiant') {
+            etudiantFields.style.display = 'block';
+            professeurFields.style.display = 'none';
+        } else if (typeValue === 'professeur') {
+            etudiantFields.style.display = 'none';
+            professeurFields.style.display = 'block';
+        } else {
+            etudiantFields.style.display = 'none';
+            professeurFields.style.display = 'none';
+        }
+    });
+});
+function affiche_pass() {
+    var mot_de_passe = document.getElementById("password");
+    var checkbox = document.getElementById("ch");
+    if (checkbox.checked) {
+        mot_de_passe.type = "text";
+    } else {
+        mot_de_passe.type = "password";
+    }
+}
