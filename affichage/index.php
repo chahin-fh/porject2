@@ -1,71 +1,51 @@
 <?php
 include("../cnx.php");
 $res = mysqli_query($cnx,"SELECT NM from matier");
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
     $res1 = mysqli_query($cnx , "SELECT n.exmen,n.cc,n.ds,n.notefinal,n.NF from matier as m , perssone as p , note as n where (p.id = m.id)and(p.classe='$cl')and(p.department = '$BR')and(m.NM = '$NM');");
-    function button1($arr,$cnx,$j,$arp){
-        while($ligne = mysqli_fetch_array($res)){
+        while($ligne = mysqli_fetch_array($res1)){
             echo"
                 <style>
-            /* Style de base pour les éléments */
-            .elem {
-                position: relative;
-                color: black;
-                background-color: rgba(255, 255, 255, 0.2);
-                padding: 10px;
-                margin: 10px 0;
-                border-radius: 8px;
-            }
-
-            /* Styles spécifiques pour chaque élément */
-            .elem1 {
-                left: 10%;
-            }
-
-            .elem2 {
-                left: 15%;
-            }
-
-            .elem3 {
-                left: 5%;
-            }
-
-            .elem4 {
-                left: 9%;
-            }
-            
-            /* Disposition Flexbox */
-            .container {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            /* Responsive Design */
-            @media (max-width: 600px) {
-                .elem {
-                    left: 0;
-                    width: 100%;
-                }
-            }
-        </style>
-
+                    #elem1{
+                        position:relative;
+                        left:10%;
+                        background-color: rgba(255,255,255,0.2);
+                        color: black;
+                    }
+                    #elem2{
+                        color: black;
+                        position:relative;
+                        left:15%;
+                    }
+                    #elem3{
+                        color: black;
+                        position:relative;
+                        left:5%;
+                    }
+                    #elem4{
+                        color: black;
+                        position:relative;
+                        left:9%;
+                    }
+                </style>
                     <tbody>
                         <tr>
-                            <td id='elem1'>$ligne[0]</td>
-                            <td id='elem2'>$ligne[1]</td>
-                            <td id='elem3'>$ligne[2]</td>
-                            <td id='elem4'>$ligne[3]</td>
-                            <td id='elem4'>$ligne[4]</td>
+                            <td id=''>$ligne[0]</td>
+                            <td id=''>$ligne[1]</td>
+                            <td id=''>$ligne[2]</td>
+                            <td id=''>$ligne[3]</td>
+                            <td id=''>$ligne[4]</td>
                         </tr>
-                    </tbody>";
+                    </tbody>
+        </table>
+        </main>
+                    ";
         }
     }
         $j = 0;
+    // Loop through inputs and insert only non-empty pairs
     button1();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,17 +83,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select>
         <input type="submit">
     </form>
-    <main>
-        <table class='styled-table'>
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>cc</th>
-                    <th>ds</th>
-                    <th>exeman</th>
-                    <th>note final</th>
-                </tr>
-            </thead>
-        </table>
-    </main>
 </body>
