@@ -3,49 +3,32 @@ include("../cnx.php");
 $res = mysqli_query($cnx,"SELECT NM from matier");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
-    $res1 = mysqli_query($cnx , "SELECT n.exmen,n.cc,n.ds,n.notefinal,n.NF from matier as m , perssone as p , note as n where (p.id = m.id)and(p.classe='$cl')and(p.department = '$BR')and(m.NM = '$NM');");
+    $res1 = mysqli_query($cnx , "SELECT n.exmen,n.cc,n.ds,p.nom,n.NF from matier as m , perssone as p , note as n where (p.id = m.id)and(p.classe='$cl')and(p.department = '$BR')and(m.NM = '$NM');");
+    echo"<div class='container'>
+	<div class='table'>
+		<div class='table-header'>
+			<div class='header__item'><h3 id='name' class='filter__link' '>Name</h3></div>
+			<div class='header__item'><h3 id='wins' class='filter__link filter__link--number' >cc</h3></div>
+			<div class='header__item'><h3 id='draws' class='filter__link filter__link--number' >ds</h3></div>
+			<div class='header__item'><h3 id='losses' class='filter__link filter__link--number' >exemen</h3></div>
+			<div class='header__item'><h3 id='total' class='filter__link filter__link--number' >NF</h3></div>
+		</div>";
         while($ligne = mysqli_fetch_array($res1)){
             echo"
-                <style>
-                    #elem1{
-                        position:relative;
-                        left:10%;
-                        background-color: rgba(255,255,255,0.2);
-                        color: black;
-                    }
-                    #elem2{
-                        color: black;
-                        position:relative;
-                        left:15%;
-                    }
-                    #elem3{
-                        color: black;
-                        position:relative;
-                        left:5%;
-                    }
-                    #elem4{
-                        color: black;
-                        position:relative;
-                        left:9%;
-                    }
-                </style>
-                    <tbody>
-                        <tr>
-                            <td id=''>$ligne[0]</td>
-                            <td id=''>$ligne[1]</td>
-                            <td id=''>$ligne[2]</td>
-                            <td id=''>$ligne[3]</td>
-                            <td id=''>$ligne[4]</td>
-                        </tr>
-                    </tbody>
-        </table>
-        </main>
-                    ";
+		<div class='table-content'>	
+			<div class='table-row'>
+				<div class='table-data'>$ligne[3]</div>
+				<div class='table-data'>$ligne[1]</div>
+				<div class='table-data'>$ligne[2]</div>
+				<div class='table-data'>$ligne[0]</div>
+				<div class='table-data'>$ligne[4]</div>
+			</div>
+		</div>";
         }
+        echo"	
+        </div>
+</div>";
     }
-        $j = 0;
-    // Loop through inputs and insert only non-empty pairs
-    button1();
 ?>
 <!DOCTYPE html>
 <html lang="en">
