@@ -3,6 +3,7 @@ form {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
     gap: 20px; /* Espacement entre les colonnes et les lignes */
+    
 }
 
 form label {
@@ -19,26 +20,49 @@ form input, form select {
 }
 
 form input:focus, form select:focus {
-    border-color: #007bff;
+    border-color:green;
     outline: none;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-/* Bouton d'inscription et lien */
+/* Bouton d'inscription */
 form input[type="submit"] {
     grid-column: span 2; /* Bouton sur deux colonnes */
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: green;
+    color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 form input[type="submit"]:hover {
-    background-color: #0056b3;
+    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
 }
 
+form input[type="submit"] {
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+/* Lien */
 form .d {
     grid-column: span 2; /* Lien sur deux colonnes */
     text-align: center;
@@ -71,4 +95,7 @@ form .d a:hover {
 
 input[type="checkbox"] {
     margin-right: 5px;
+}
+body{
+    background-color: rgba(44, 187, 99, .35);
 }

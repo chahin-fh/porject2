@@ -1,6 +1,6 @@
 <?php
 extract($_POST);
-$cnx = mysqli_connect("127.0.0.1","root","","ifbreak");
+include("../cnx.php");
 function hashPassword($mp) {
     $hashedPassword = password_hash($mp, PASSWORD_BCRYPT);
     return $hashedPassword;
