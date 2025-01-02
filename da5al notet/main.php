@@ -1,5 +1,5 @@
 <?php   
-include("../connect.php");
+include("../cnx.php");
 session_start();
 extract($_POST);
 $req = "SELECT code from produit where (code='$code');";
