@@ -3,104 +3,50 @@ include("../cnx.php");
 $res = mysqli_query($cnx,"SELECT NM from matier");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cl = $_POST['classe'];
-    $BR = $_POST['branch'];
-    $NM = $_POST['matier'];
-    $res1 = mysqli_query($cnx , "SELECT n.exmen, n.cc, n.ds, n.notefinal, n.NF FROM matier AS m, personnes AS p, note AS n WHERE (p.id = n.personne_id) AND (p.classe = '$cl') AND (p.department = '$BR') AND (m.NM = '$NM');");    
-    while($ligne = mysqli_fetch_array($res1)) {
-        echo "
-            <style>
-                body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-form {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-select, input[type='submit'] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-input[type='submit'] {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-input[type='submit']:hover {
-    background-color: #45a049;
-}
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-th, td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-th {
-    background-color: #f2f2f2;
-}
-tr:hover {
-    background-color: #f1f1f1;
-}
-#elem1, #elem2, #elem3, #elem4 {
-    color: black;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-#elem1 {
-    position: relative;
-    left: 10%;
-}
-#elem2 {
-    position: relative;
-    left: 15%;
-}
-#elem3 {
-    position: relative;
-    left: 5%;
-}
-#elem4 {
-    position: relative;
-    left: 9%;
-}
-            </style>
-                <tbody>
-                    <tr>
-                        <td id='elem1'>$ligne[0]</td>
-                        <td id='elem2'>$ligne[1]</td>
-                        <td id='elem3'>$ligne[2]</td>
-                        <td id='elem4'>$ligne[3]</td>
-                        <td id='elem4'>$ligne[4]</td>
-                    </tr>
-                </tbody>
-        </table> <!-- Fermeture de la table -->
+    extract($_POST);
+    $res1 = mysqli_query($cnx , "SELECT n.exmen,n.cc,n.ds,n.notefinal,n.NF from matier as m , perssone as p , note as n where (p.id = m.id)and(p.classe='$cl')and(p.department = '$BR')and(m.NM = '$NM');");
+        while($ligne = mysqli_fetch_array($res1)){
+            echo"
+                <style>
+                    #elem1{
+                        position:relative;
+                        left:10%;
+                        background-color: rgba(255,255,255,0.2);
+                        color: black;
+                    }
+                    #elem2{
+                        color: black;
+                        position:relative;
+                        left:15%;
+                    }
+                    #elem3{
+                        color: black;
+                        position:relative;
+                        left:5%;
+                    }
+                    #elem4{
+                        color: black;
+                        position:relative;
+                        left:9%;
+                    }
+                </style>
+                    <tbody>
+                        <tr>
+                            <td id=''>$ligne[0]</td>
+                            <td id=''>$ligne[1]</td>
+                            <td id=''>$ligne[2]</td>
+                            <td id=''>$ligne[3]</td>
+                            <td id=''>$ligne[4]</td>
+                        </tr>
+                    </tbody>
+        </table>
         </main>
-        ";
+                    ";
+        }
     }
-    $j = 0;
-}
+        $j = 0;
+    // Loop through inputs and insert only non-empty pairs
+    button1();
 ?>
 
 <!DOCTYPE html>
