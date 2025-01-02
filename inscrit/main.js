@@ -1,107 +1,51 @@
 function verif() {
-    let nom = document.getElementById("nom").value;
-    let mp1 = document.getElementById("mp1").value;
-    let mp2 = document.getElementById("mp2").value;
-    let mail = document.getElementById("mail").value;
-    let flous = document.getElementById("flous").value;
-    if (nom == "") {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "il ism fari8";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (verif_nom(nom) == false) {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "il ism 8alit";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (mp1 == "") {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "passe fera8 ";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (verif_mp1(mp1) == false) {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "passe 8alit";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (mp2 == "") {
-        document.getElementById("e3").innerHTML = "iktib il passe mara o5ra hni";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (verif_mp2(mp2, mp1) == false) {
-        document.getElementById("e3").innerHTML = "iktib il passe bi shih ";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (mail == "") {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML ="il mail fara8"
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (verif_mail(mail) == false) {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML ="mail 8alit"
-        document.getElementById("e5").innerHTML =""
-        return false;
-    } else if (flous == "") {
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML ="i5tar haja"
-        return false;
-    }else{
-        document.getElementById("msg").innerHTML = "ahla bik fi wistna"
-        document.getElementById("e3").innerHTML = "";
-        document.getElementById("e1").innerHTML = "";
-        document.getElementById("e2").innerHTML = "";
-        document.getElementById("e4").innerHTML =""
-        document.getElementById("e5").innerHTML =""
-    }
-}
-function verif_nom(ch) {
-    let i = 0;
-    while (i < ch.length) {
-        let char = ch.charAt(i).toUpperCase();
-        if ((char >= 'A' && char <= 'Z') || (ch.charAt(i) >= "0" && ch.charAt(i) <= "9") || (ch.charAt(i) == ".") || (ch.charAt(i) ==" ")) {
-            i++;
-        } else {
-            break;
+    let type=document.getElementById("type").value;
+    let nom=document.getElementById("nom").value;
+    let mail=document.getElementById("mail").value;
+    let num=document.getElementById("num").value; //vide
+    let adr=document.getElementById("adr").value; //vide
+    let vill=document.getElementById("vill").value;
+    let cp=document.getElementById("cp").value;
+    let p=document.getElementById("p").value;
+    let dep=document.getElementById("dep").value;
+    
+
+    if (type=="") {
+        alert("donner voutre type de paersoone");
+
+    }else if(type=="Etudient"){
+        if(!verif_nom(nom)){
+            alert("verifer votre nom");
+            return false;
+        }else if(!verif_mail(mail)){
+            alert("verifer votre mail");
+            return false;
+        }else if(num!=""){
+            if(!verif_num(num)){
+                alert("verifer votre num");
+                return false;
+            }
+        }else if(adr!=""){
+            if(adr.length>20){
+                alert("verifer votre adr");
+                return false;
+            }
+        }else if(vill==""){
+            alert("donner vore ville");
+            return false;
+        }else if(cp.length!=4){
+            alert("verifer votre cp");
+            return false;
+        }else if(p==""){
+            alert("donner votre paye");
+            return false;
+        }else if(dep!=""){
+            d=["LT","IOT","LM"];
+            if (!(dep.includes(d))){
+                alert("verifer votre departement");
+            }
         }
-    }
-    return i == ch.length && ch.length >= 8;
 }
-function verif_mp1(ch) {
-    let i = 0;
-    while (i < ch.length) {
-        let char = ch.charAt(i).toUpperCase();
-        if ((char >= 'A' && char <= 'Z') || (ch.charAt(i) >= "0" && ch.charAt(i) <= "9") || (ch.charAt(i) == ".")) {
-            i++;
-        } else {
-            break;
-        }
-    }
-    return i == ch.length && ch.length >= 8;
-}
-function verif_mp2(ch, mp1) {
-    return verif_mp1(ch) && ch == mp1;
 }
 function verif_mail(ch) {
     const domainesAcceptes = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@icloud.com", "@protonmail.com"];
@@ -149,5 +93,51 @@ function affiche_pass() {
         mot_de_passe.type = "text";
     } else {
         mot_de_passe.type = "password";
+    }
+}
+function chiffrer(ch) {
+    const decalage = 3; // Décalage fixe
+    let chc = '';
+    for (let i = 0; i < ch.length; i++) {
+        let code = ch.charCodeAt(i);
+        // Si c'est une lettre majuscule
+        if (code >= 65 && code <= 90) {
+            chc += String.fromCharCode(((code - 65 + decalage) % 26) + 65);
+        }
+        // Si c'est une lettre minuscule
+        else if (code >= 97 && code <= 122) {
+            chc += String.fromCharCode(((code - 97 + decalage) % 26) + 97);
+        }
+        // Sinon, conserver le caractère original
+        else {
+            chc += ch[i];
+        }
+    }
+    return chc;
+}
+function verif_mail(ch) {
+    const domainesAcceptes = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@icloud.com", "@protonmail.com"];
+    let pos = ch.indexOf("@");
+    if (pos === -1) {
+        return false;
+    }
+    let domaine = ch.substring(pos);
+    return domainesAcceptes.includes(domaine);
+}
+function verif_nom(ch) {
+    let i = 0;
+    while (i < ch.length) {
+        let char = ch.charAt(i).toUpperCase();
+        if ((char >= 'A' && char <= 'Z') || (ch.charAt(i) >= "0" && ch.charAt(i) <= "9") || (ch.charAt(i) == ".") || (ch.charAt(i) ==" ")) {
+            i++;
+        } else {
+            break;
+        }
+    }
+    return i == ch.length && ch.length >= 8;
+}
+function verif_num(ch){
+    if (!(ch.charAt(0) == "2" || ch.charAt(0) == "5" || ch.charAt(0) == "9" && ch.length==8)) {
+        return false;
     }
 }

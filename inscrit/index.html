@@ -6,71 +6,74 @@
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
     <title>Formulaire d'inscription</title>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('type').addEventListener('change', function() {
+            let typeValue = this.value;
+            let etudiantFields = document.getElementById('etudiant_fields');
+            let professeurFields = document.getElementById('professeur_fields');
+    
+            if (typeValue === 'etudiant') {
+                etudiantFields.style.display = 'block';
+                professeurFields.style.display = 'none';
+            } else if (typeValue === 'professeur') {
+                etudiantFields.style.display = 'none';
+                professeurFields.style.display = 'block';
+            } else {
+                etudiantFields.style.display = 'none';
+                professeurFields.style.display = 'none';
+            }
+        });
+    });</script>
 </head>
 <body>
     <main>
+        <div class="container">
         <form action="main.php" onsubmit="return verif()" method="post">
-            <h3>Formulaire d'inscription</h3>
-
+            <h1>Formulaire d'inscription</h1>
             <label for="type">Type :</label>
             <select name="type" id="type" required>
                 <option value="">Sélectionnez votre type</option>
-                <option value="etudiant">Étudiant</option>
+                <option value="etudiant">Etudiant</option>
                 <option value="professeur">Professeur</option>
             </select>
-
             <label for="name">Nom et prénom :</label>
             <input type="text" id="name" name="name" placeholder="Entrez votre nom complet" required>
-
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required>
-
             <label for="phone">Numéro de Téléphone :</label>
             <input type="text" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required>
-
             <label for="address">Adresse :</label>
             <input type="text" id="address" name="address" placeholder="Entrez votre adresse">
-
             <label for="city">Ville :</label>
             <input type="text" id="city" name="city" placeholder="Entrez votre ville" required>
-
             <label for="postal_code">Code Postal :</label>
             <input type="text" id="postal_code" name="postal_code" placeholder="Entrez votre code postal" required>
-
             <label for="country">Pays :</label>
             <input type="text" id="country" name="country" placeholder="Entrez votre pays" required>
-
             <label for="department">Département :</label>
             <input type="text" id="department" name="department" placeholder="Entrez votre département" required>
-
             <div id="etudiant_fields" style="display: none;">
                 <label for="date_of_birth">Date de Naissance :</label>
                 <input type="date" id="date_of_birth" name="date_of_birth">
-
                 <label for="academic_level">Niveau d'Étude :</label>
                 <input type="text" id="academic_level" name="academic_level" placeholder="Entrez votre niveau d'étude">
-
                 <label for="enrollment_date">Date d'Inscription :</label>
                 <input type="date" id="enrollment_date" name="enrollment_date">
             </div>
-
             <div id="professeur_fields" style="display: none;">
                 <label for="academic_title">Titre Académique :</label>
                 <input type="text" id="academic_title" name="academic_title" placeholder="Entrez votre titre académique">
-
                 <label for="hire_date">Date d'Embauche :</label>
                 <input type="date" id="hire_date" name="hire_date">
-
                 <label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
                 <input type="checkbox" id="ch" onclick="affiche_pass()">
                 <label for="show_password">Afficher le mot de passe</label>
             </div>
-
             <input type="submit" value="S'inscrire" class="b">
-
             <p class="d">Déjà inscrit ? <a href="../connexion/index.html">Connectez-vous ici</a></p>
         </form>
+    </div>
     </main>
 </body>
 </html>

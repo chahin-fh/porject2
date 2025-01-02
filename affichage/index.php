@@ -40,8 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="main.js"></script>
     <style>
         select {
-
-/* styling */
 background-color: white;
 border: thin solid blue;
 border-radius: 4px;
@@ -49,9 +47,6 @@ display: inline-block;
 font: inherit;
 line-height: 1.5em;
 padding: 0.5em 3.5em 0.5em 1em;
-
-/* reset */
-
 margin: 0;      
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
@@ -59,10 +54,6 @@ box-sizing: border-box;
 -webkit-appearance: none;
 -moz-appearance: none;
 }
-
-
-/* arrows */
-
 select.classic {
 background-image:
   linear-gradient(45deg, transparent 50%, blue 50%),
@@ -96,10 +87,6 @@ background-repeat: no-repeat;
 border-color: grey;
 outline: 0;
 }
-
-
-
-
 select.round {
 background-image:
   linear-gradient(45deg, transparent 50%, gray 50%),
@@ -133,11 +120,6 @@ background-repeat: no-repeat;
 border-color: green;
 outline: 0;
 }
-
-
-
-
-
 select.minimal {
 background-image:
   linear-gradient(45deg, transparent 50%, gray 50%),
@@ -171,8 +153,6 @@ background-repeat: no-repeat;
 border-color: green;
 outline: 0;
 }
-
-
 select:-moz-focusring {
 color: transparent;
 text-shadow: 0 0 0 #000;
