@@ -8,8 +8,6 @@ function verif() {
     let cp=document.getElementById("cp").value;
     let p=document.getElementById("p").value;
     let dep=document.getElementById("dep").value;
-    
-
     if (type=="") {
         alert("donner voutre type de paersoone");
 
