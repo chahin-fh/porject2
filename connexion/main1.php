@@ -12,6 +12,7 @@ if($nb<1){
 }else{
     $id = mysqli_fetch_array($res);
     $_SESSION['id']=$id[2];
+    sleep(1);
     header("location:../menu/index.html");
 }
 mysqli_close($cnx);

@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Erreur: " . $stmt->error;
     }
+    sleep(1);
     header("Location: ../connexion/index.html");
     $stmt->close();
     mysqli_close($cnx);
