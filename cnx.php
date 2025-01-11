@@ -1,3 +1,3 @@
 <?php
-$cnx = mysqli_connect("localhost","root","","school");
+$cnx = mysqli_connect("127.0.0.1","root","","school");
 ?>
