@@ -10,38 +10,12 @@ function verif() {
     let dep=document.getElementById("dep").value;
     if (type=="") {
         alert("donner voutre type de paersoone");
+        return false;
     }else if(type=="Etudient"){
-        if(!verif_nom(nom)){
-            alert("verifer votre nom");
+        if (nom==""){
+            alert("donner votre nom");
             return false;
-        }else if(!verif_mail(mail)){
-            alert("verifer votre mail");
-            return false;
-        }else if(num!=""){
-            if(!verif_num(num)){
-                alert("verifer votre num");
-                return false;
-            }
-        }else if(adr!=""){
-            if(adr.length>20){
-                alert("verifer votre adr");
-                return false;
-            }
-        }else if(vill==""){
-            alert("donner vore ville");
-            return false;
-        }else if(cp.length!=4){
-            alert("verifer votre cp");
-            return false;
-        }else if(p==""){
-            alert("donner votre paye");
-            return false;
-        }else if(dep!=""){
-            d=["LT","IOT","LM"];
-            if (!(dep.includes(d))){
-                alert("verifer votre departement");
-            }
-        }
+        }else if (!verif_){}
 }
 }
 function verif_mail(ch) {
