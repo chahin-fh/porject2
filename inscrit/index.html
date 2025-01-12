@@ -34,13 +34,26 @@
             <input type="text" id="country" name="country" placeholder="Entrez votre pays" required>
             <label for="department">Département :</label>
             <input type="text" id="department" name="department" placeholder="Entrez votre département" required>
+            <select name="department" id="department">
+                <option value="0">Sélectionnez votre type</option>
+                <option value="LT">LT</option>
+                <option value="LM">LM</option>
+                <option value="IOT">IOT</option>
+            </select>
             <div id="etudiant_fields" style="display: none;">
                 <label for="date_of_birth">Date de Naissance :</label>
+                <br><br>
                 <input type="date" id="date_of_birth" name="date_of_birth">
+                <br><br>
                 <label for="academic_level">Niveau d'Étude :</label>
-                <input type="text" id="academic_level" name="academic_level" placeholder="Entrez votre niveau d'étude">
-                <label for="enrollment_date">Date d'Inscription :</label>
-                <input type="date" id="enrollment_date" name="enrollment_date">
+                <br>
+                <br>
+                <select name="academic_level" id="academic_level">
+                    <option value="0">Sélectionnez votre type</option>
+                    <option value="1">1ére</option>
+                    <option value="2">2éme</option>
+                    <option value="3">3éme</option>
+                </select>
             </div>
             <div id="professeur_fields" style="display: none;">
                 <label for="academic_title">Titre Académique :</label>
@@ -49,8 +62,8 @@
                 <input type="date" id="hire_date" name="hire_date">
                 <label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
-                <input type="checkbox" id="ch" onclick="affiche_pass()">
                 <label for="show_password">Afficher le mot de passe</label>
+                <input type="checkbox" id="ch" onclick="affiche_pass()">
             </div>
             <input type="submit" value="S'inscrire" class="b">
             <p class="d">Déjà inscrit ? <a href="../connexion/index.html">Connectez-vous ici</a></p>

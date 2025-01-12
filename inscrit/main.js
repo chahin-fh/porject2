@@ -15,7 +15,7 @@ function verif() {
         if (nom==""){
             alert("donner votre nom");
             return false;
-        }else if (!verif_)
+        }else if (!verif_){}
 }
 }
 function verif_mail(ch) {
