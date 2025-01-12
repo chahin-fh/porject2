@@ -36,7 +36,7 @@
             <option value="">Select a class</option>
             <?php
             include("../cnx.php");
-            $classes_res = mysqli_query($cnx, "SELECT DISTINCT niveau_etud FROM personne");
+            $classes_res = mysqli_query($cnx, "SELECT niveau_etud FROM personne");
             while ($row = mysqli_fetch_assoc($classes_res)) {
                 echo '<option value="' . htmlspecialchars($row['niveau_etud']) . '">' . htmlspecialchars($row['niveau_etud']) . '</option>';
             }
@@ -53,10 +53,11 @@
             }
             mysqli_free_result($names_res);
             mysqli_close($cnx);
+            echo '<input type="submit" value="Select">';
             ?>
         </select>
         
-        <input type="submit" value="Select">
+        
     </form>
 
     
