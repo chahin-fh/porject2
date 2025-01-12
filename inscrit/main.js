@@ -8,13 +8,11 @@ function verif() {
     let cp=document.getElementById("cp").value;
     let p=document.getElementById("p").value;
     let dep=document.getElementById("dep").value;
-    let mp1=document.getElementById("mp1").value;
+    let pass=document.getElementById("password").value;
     if (type==""){
         alert("Veuillez choisir un type");
         return false;
     }else if (type=="Etudiant"){
-        let dat_nais=document.getElementById("dat_nais").value;
-        let niveau=document.getElementById("").value;
         if(nom==""){
             alert("Veuillez saisir votre nom");
             return false;
@@ -45,6 +43,12 @@ function verif() {
         }else if(vill.length>50){
             alert("Ville est plus de 50 caractères");
             return false;
+        }else if (cp==""){
+            alert("Veuillez saisir votre code postal");
+            return false;
+        }else if (isNaN(cp) && (cp.length =! 4)){
+            alert("Code postal invalide");
+            return false;
         }
     }
 }        
@@ -57,17 +61,32 @@ function verif_mail(ch) {
     let domaine = ch.substring(pos);
     return domainesAcceptes.includes(domaine);
 }
-function affiche_pass(){
-    var mot_de_passe=document.getElementById("mp1");
-    var mot_de_passe2=document.getElementById("mp2");
-    var checked = document.getElementById("ch").checked;
-    if (checked) {
-        mot_de_passe.type="text";
-        mot_de_passe2.type="text";
-    }else{
-        mot_de_passe.type="password";
-        mot_de_passe2.type="password";
-    }
+function verif_p(ch){
+    const countries = [
+        "Afghanistan", "Albanie", "Algérie", "Andorre", "Angola", "Antigua-et-Barbuda", "Argentine", "Arménie", "Australie", "Autriche",
+        "Azerbaïdjan", "Bahamas", "Bahreïn", "Bangladesh", "Barbade", "Biélorussie", "Belgique", "Belize", "Bénin", "Bhoutan",
+        "Bolivie", "Bosnie-Herzégovine", "Botswana", "Brésil", "Brunei", "Bulgarie", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodge",
+        "Cameroun", "Canada", "République centrafricaine", "Tchad", "Chili", "Chine", "Colombie", "Comores", "Congo", "Costa Rica",
+        "Croatie", "Cuba", "Chypre", "République tchèque", "Danemark", "Djibouti", "Dominique", "République dominicaine", "Équateur", "Égypte",
+        "Salvador", "Guinée équatoriale", "Érythrée", "Estonie", "Eswatini", "Éthiopie", "Fidji", "Finlande", "France", "Gabon",
+        "Gambie", "Géorgie", "Allemagne", "Ghana", "Grèce", "Grenade", "Guatemala", "Guinée", "Guinée-Bissau", "Guyana",
+        "Haïti", "Honduras", "Hongrie", "Islande", "Inde", "Indonésie", "Iran", "Irak", "Irlande",
+        "Italie", "Jamaïque", "Japon", "Jordanie", "Kazakhstan", "Kenya", "Kiribati", "Koweït", "Kirghizistan", "Laos",
+        "Lettonie", "Liban", "Lesotho", "Liberia", "Libye", "Liechtenstein", "Lituanie", "Luxembourg", "Madagascar", "Malawi",
+        "Malaisie", "Maldives", "Mali", "Malte", "Marshall", "Mauritanie", "Maurice", "Mexique", "Micronésie", "Moldavie",
+        "Monaco", "Mongolie", "Monténégro", "Maroc", "Mozambique", "Myanmar", "Namibie", "Nauru", "Népal", "Pays-Bas",
+        "Nouvelle-Zélande", "Nicaragua", "Niger", "Nigéria", "Corée du Nord", "Macédoine du Nord", "Norvège", "Oman", "Pakistan", "Palaos",
+        "Palestine", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pérou", "Philippines", "Pologne", "Portugal", "Qatar", "Roumanie",
+        "Russie", "Rwanda", "Saint-Christophe-et-Niévès", "Sainte-Lucie", "Saint-Vincent-et-les-Grenadines", "Samoa", "Saint-Marin", "Sao Tomé-et-Principe", "Arabie saoudite", "Sénégal",
+        "Serbie", "Seychelles", "Sierra Leone", "Singapour", "Slovaquie", "Slovénie", "Îles Salomon", "Somalie", "Afrique du Sud", "Corée du Sud",
+        "Soudan du Sud", "Espagne", "Sri Lanka", "Soudan", "Suriname", "Suède", "Suisse", "Syrie", "Taïwan", "Tadjikistan",
+        "Tanzanie", "Thaïlande", "Timor-Leste", "Togo", "Tonga", "Trinité-et-Tobago", "Tunisie", "Turquie", "Turkménistan", "Tuvalu",
+        "Ouganda", "Ukraine", "Émirats arabes unis", "Royaume-Uni", "États-Unis", "Uruguay", "Ouzbékistan", "Vanuatu", "Vatican", "Venezuela",
+        "Viêt Nam", "Yémen", "Zambie", "Zimbabwe"
+    ];
+    
+    console.log(countries);
+    
 }
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('type').addEventListener('change', function() {
