@@ -8,16 +8,46 @@ function verif() {
     let cp=document.getElementById("cp").value;
     let p=document.getElementById("p").value;
     let dep=document.getElementById("dep").value;
-    if (type=="") {
-        alert("donner voutre type de paersoone");
+    let mp1=document.getElementById("mp1").value;
+    if (type==""){
+        alert("Veuillez choisir un type");
         return false;
-    }else if(type=="Etudient"){
-        if (nom==""){
-            alert("donner votre nom");
+    }else if (type=="Etudiant"){
+        let dat_nais=document.getElementById("dat_nais").value;
+        let niveau=document.getElementById("").value;
+        if(nom==""){
+            alert("Veuillez saisir votre nom");
             return false;
-        }else if (!verif_){}
-}
-}
+        }else if(!verif_nom(nom)){
+            alert("Nom invalide");
+            return false;
+        }else if(mail==""){
+            alert("Veuillez saisir votre mail");
+            return false;
+        }else if(!verif_mail(mail)){
+            alert("Mail invalide");
+            return false;
+        }else if(num==""){
+            alert("Veuillez saisir votre numéro");
+            return false;
+        }else if(!verif_num(num)){
+            alert("Numéro invalide");
+            return false;
+        }else if (adr==""){
+            alert("Veuillez saisir votre adresse");
+            return false;
+        }else if(adr.length>100){
+            alert("Adresse est plus de 100 caractères");
+            return false;
+        }else if(vill==""){
+            alert("Veuillez saisir votre ville");
+            return false;
+        }else if(vill.length>50){
+            alert("Ville est plus de 50 caractères");
+            return false;
+        }
+    }
+}        
 function verif_mail(ch) {
     const domainesAcceptes = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@icloud.com", "@protonmail.com"];
     let pos = ch.indexOf("@");
@@ -45,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let etudiantFields = document.getElementById('etudiant_fields');
         let professeurFields = document.getElementById('professeur_fields');
 
-        if (typeValue === 'etudiant') {
+        if (typeValue === 'Etudiant') {
             etudiantFields.style.display = 'block';
             professeurFields.style.display = 'none';
-        } else if (typeValue === 'professeur') {
+        } else if (typeValue === 'Professeur') {
             etudiantFields.style.display = 'none';
             professeurFields.style.display = 'block';
         } else {
@@ -59,8 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 function affiche_pass() {
     var mot_de_passe = document.getElementById("password");
-    var checkbox = document.getElementById("ch");
-    if (checkbox.checked) {
+    var checkboxp = document.getElementById("chp");
+    var checkboxe = document.getElementById("che");
+    if (checkboxp.checked || checkboxe.checked) {
         mot_de_passe.type = "text";
     } else {
         mot_de_passe.type = "password";
@@ -129,4 +160,4 @@ document.addEventListener('DOMContentLoaded', function() {
             professeurFields.style.display = 'none';
         }
     });
-});
+})
