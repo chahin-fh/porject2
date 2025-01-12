@@ -1,25 +1,26 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        include("../cnx.php");
-        $classe = $_POST['classe'];
-        if (!empty($classe)) {
-            $res = mysqli_query($cnx, "SELECT nom FROM personne WHERE niveau_etud = '$classe'");
-            if ($res) {
-                echo "<ul>";
-                while ($row = mysqli_fetch_assoc($res)) {
-                    echo "<li>" . htmlspecialchars($row['nom']) . "</li>";
-                }
-                echo "</ul>";
-                mysqli_free_result($res);
-            } else {
-                echo "Error: " . mysqli_error($cnx);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include("../cnx.php");
+    $classe = $_POST['classe'];
+    if (!empty($classe)) {
+        $res = mysqli_query($cnx, "SELECT nom FROM personne WHERE niveau_etud = '$classe'");
+        if ($res) {
+            echo "<ul>";
+            while ($row = mysqli_fetch_assoc($res)) {
+                echo "<li>" . htmlspecialchars($row['nom']) . "</li>";
             }
+            echo "</ul>";
+            mysqli_free_result($res);
         } else {
-            echo "Please select a class.";
+            echo "Error: " . mysqli_error($cnx);
         }
-        mysqli_close($cnx);
+    } else {
+        echo "Please select a class.";
     }
-    ?>
+    mysqli_close($cnx);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,30 +37,33 @@
             <option value="">Select a class</option>
             <?php
             include("../cnx.php");
-            $classes_res = mysqli_query($cnx, "SELECT niveau_etud FROM personne");
+            $classes_res = mysqli_query($cnx, "SELECT DISTINCT niveau_etud FROM personne");
             while ($row = mysqli_fetch_assoc($classes_res)) {
                 echo '<option value="' . htmlspecialchars($row['niveau_etud']) . '">' . htmlspecialchars($row['niveau_etud']) . '</option>';
             }
             mysqli_free_result($classes_res);
+            mysqli_close($cnx);
             ?>
         </select>        
         <label for="nom">Nom:</label>
         <select name="nom" id="nom">
             <option value="">Select a name</option>
             <?php
+            include("../cnx.php");
             $names_res = mysqli_query($cnx, "SELECT DISTINCT nom FROM personne");
             while ($row = mysqli_fetch_assoc($names_res)) {
                 echo '<option value="' . htmlspecialchars($row['nom']) . '">' . htmlspecialchars($row['nom']) . '</option>';
             }
             mysqli_free_result($names_res);
             mysqli_close($cnx);
-            echo '<input type="submit" value="Select">';
             ?>
         </select>
         
-        
+        <input type="submit" value="Select">
     </form>
 
-    
+    <!-- Le code PHP pour afficher les résultats sera exécuté ici -->
+    <?php echo ob_get_clean(); ?>
+
 </body>
 </html>
