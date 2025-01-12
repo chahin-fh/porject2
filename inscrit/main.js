@@ -143,21 +143,3 @@ function verif_num(ch){
         return false;
     }
 }
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('type').addEventListener('change', function() {
-        let typeValue = this.value;
-        let etudiantFields = document.getElementById('etudiant_fields');
-        let professeurFields = document.getElementById('professeur_fields');
-
-        if (typeValue === 'etudiant') {
-            etudiantFields.style.display = 'block';
-            professeurFields.style.display = 'none';
-        } else if (typeValue === 'professeur') {
-            etudiantFields.style.display = 'none';
-            professeurFields.style.display = 'block';
-        } else {
-            etudiantFields.style.display = 'none';
-            professeurFields.style.display = 'none';
-        }
-    });
-})
