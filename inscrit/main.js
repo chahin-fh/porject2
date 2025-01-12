@@ -10,7 +10,6 @@ function verif() {
     let dep=document.getElementById("dep").value;
     if (type=="") {
         alert("donner voutre type de paersoone");
-
     }else if(type=="Etudient"){
         if(!verif_nom(nom)){
             alert("verifer votre nom");

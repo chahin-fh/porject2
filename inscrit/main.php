@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($type == "etudiant") {
         $date_of_birth = mysqli_real_escape_string($cnx, $_POST["date_of_birth"]);
         $academic_level = mysqli_real_escape_string($cnx, $_POST["academic_level"]);
-        $enrollment_date = mysqli_real_escape_string($cnx, $_POST["enrollment_date"]);
+        $enrollment_date = date("Y-m-d");
         $stmt = $cnx->prepare("INSERT INTO personnes (typ, nom, email, num_tell, adress, ville, code_p, paye, department, date_nais, niveau_etud, date_inscrit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt === false) {
             die("Erreur lors de la préparation de la requête: " . mysqli_error($cnx));
