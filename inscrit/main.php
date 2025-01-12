@@ -5,11 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Erreur de connexion à la base de données: " . mysqli_connect_error());
     }
     extract($_POST);
-    if ($type == "professeur") {
-        $academic_title = mysqli_real_escape_string($cnx, $_POST["academic_title"]);
-        $hire_date = mysqli_real_escape_string($cnx, $_POST["hire_date"]);
-        $password = mysqli_real_escape_string($cnx, $_POST["password"]);
-        $stmt = $cnx->prepare("INSERT INTO personnes (typ, nom, email, num_tell, adress, ville, code_p, paye, department, titre, date_deb, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if ($type == "professeur")
         if ($stmt === false) {
             die("Erreur lors de la préparation de la requête: " . mysqli_error($cnx));
         }
