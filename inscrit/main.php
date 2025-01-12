@@ -26,11 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $date_of_birth = mysqli_real_escape_string($cnx, $_POST["date_of_birth"]);
         $academic_level = mysqli_real_escape_string($cnx, $_POST["academic_level"]);
         $enrollment_date = date("Y-m-d");
-        $stmt = $cnx->prepare("INSERT INTO personnes (typ, nom, email, num_tell, adress, ville, code_p, paye, department, date_nais, niveau_etud, date_inscrit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $res = mysqli_query($cnx,"SELECT count(classe) from personnes;");
+        $j = mysqli_fetch_array($res)[0];
+        $c = 1;
+        if($j % 20 === 0 ){
+            $c = $j / 20;
+        }else {
+            $c = floor($j);
+        }
+        $c = (string) $c;
+        $a = (string) $academic_level;
+        $classe = $a . $department . $c;
+        $stmt = $cnx->prepare("INSERT INTO personnes (typ, nom, email, num_tell, adress, ville, code_p, paye, department, date_nais, niveau_etud, date_inscrit,classe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);");
         if ($stmt === false) {
             die("Erreur lors de la préparation de la requête: " . mysqli_error($cnx));
         }
-        $stmt->bind_param("ssssssssssss", $type, $name, $email, $phone, $address, $city, $postal_code, $country, $department, $date_of_birth, $academic_level, $enrollment_date);
+        $stmt->bind_param("ssssssssssss", $type, $name, $email, $phone, $address, $city, $postal_code, $country, $department, $date_of_birth, $academic_level, $enrollment_date ,$classe);
     } else {
         echo "<script>alert('Veuillez spécifier votre type');</script>";
         exit;
