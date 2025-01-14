@@ -1,14 +1,17 @@
 function verif() {
-    let type=document.getElementById("type").value;
-    let nom=document.getElementById("nom").value;
-    let mail=document.getElementById("mail").value;
-    let num=document.getElementById("num").value; //vide
-    let adr=document.getElementById("adr").value; //vide
-    let vill=document.getElementById("vill").value;
-    let cp=document.getElementById("cp").value;
-    let p=document.getElementById("p").value;
-    let dep=document.getElementById("dep").value;
-    let pass=document.getElementById("password").value;
+    let type=document.getElementById("type").value;//com
+    let nom=document.getElementById("nom").value;//com
+    let mail=document.getElementById("mail").value;//com
+    let num=document.getElementById("num").value; //com
+    let adr=document.getElementById("adr").value; //com
+    let vill=document.getElementById("vill").value;//com
+    let cp=document.getElementById("cp").value;//com
+    let p=document.getElementById("p").value;//com
+    let dep=document.getElementById("dep").value;//com
+    let pass=document.getElementById("password").value;//com
+    let dat_nais=document.getElementById("dat_nais").value;//etud
+    let niveau=document.getElementById("academic_level").value;//etud
+    let titre=document.getElementById("titre").value;//prof
     if (type==""){
         alert("Veuillez choisir un type");
         return false;
@@ -49,9 +52,82 @@ function verif() {
         }else if (isNaN(cp) && (cp.length =! 4)){
             alert("Code postal invalide");
             return false;
+        }else if(!verif_p(p)){
+            alert("E5tar bleeedk");
+            return false;
+        }else if(!verif_dep(dep)){
+            alert("E5tar dommmenk");
+            return false;
+        }else if(!verif_pass(pass)){
+            alert("pass 8lata y bhiiiiim");
+            return false;
+        }else if (!(dat_nais>Date())){
+            alert("date t3k 8latttt");
+            return false;
+        }else if (!verif_n(niveau)){
+            alert("e5ter nivieau");
+            return  false;
+        }
+    }else{
+        if(nom==""){
+            alert("Veuillez saisir votre nom");
+            return false;
+        }else if(!verif_nom(nom)){
+            alert("Nom invalide");
+            return false;
+        }else if(mail==""){
+            alert("Veuillez saisir votre mail");
+            return false;
+        }else if(!verif_mail(mail)){
+            alert("Mail invalide");
+            return false;
+        }else if(num==""){
+            alert("Veuillez saisir votre numéro");
+            return false;
+        }else if(!verif_num(num)){
+            alert("Numéro invalide");
+            return false;
+        }else if (adr==""){
+            alert("Veuillez saisir votre adresse");
+            return false;
+        }else if(adr.length>100){
+            alert("Adresse est plus de 100 caractères");
+            return false;
+        }else if(vill==""){
+            alert("Veuillez saisir votre ville");
+            return false;
+        }else if(vill.length>50){
+            alert("Ville est plus de 50 caractères");
+            return false;
+        }else if (cp==""){
+            alert("Veuillez saisir votre code postal");
+            return false;
+        }else if (isNaN(cp) && (cp.length =! 4)){
+            alert("Code postal invalide");
+            return false;
+        }else if(!verif_p(p)){
+            alert("E5tar bleeedk");
+            return false;
+        }else if(!verif_dep(dep)){
+            alert("E5tar dommmenk");
+            return false;
+        }else if(!verif_pass(pass)){
+            alert("pass 8lata y bhiiiiim");
+            return false;
+        }else if(titre==""){
+            alert("7ot tittre t3k");
+            return false;
         }
     }
-}        
+}
+function verif_dep(ch){
+    let dep = ["LT","IOT","LM"];
+    return dep.includes(ch);
+} 
+function verif_n(ch){
+    let n = ["1er","2eme","3eme"];
+    return n.includes(ch);
+}
 function verif_mail(ch) {
     const domainesAcceptes = ["@gmail.com", "@outlook.com", "@yahoo.com", "@hotmail.com", "@icloud.com", "@protonmail.com"];
     let pos = ch.indexOf("@");
@@ -63,30 +139,35 @@ function verif_mail(ch) {
 }
 function verif_p(ch){
     const countries = [
-        "Afghanistan", "Albanie", "Algérie", "Andorre", "Angola", "Antigua-et-Barbuda", "Argentine", "Arménie", "Australie", "Autriche",
-        "Azerbaïdjan", "Bahamas", "Bahreïn", "Bangladesh", "Barbade", "Biélorussie", "Belgique", "Belize", "Bénin", "Bhoutan",
-        "Bolivie", "Bosnie-Herzégovine", "Botswana", "Brésil", "Brunei", "Bulgarie", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodge",
-        "Cameroun", "Canada", "République centrafricaine", "Tchad", "Chili", "Chine", "Colombie", "Comores", "Congo", "Costa Rica",
-        "Croatie", "Cuba", "Chypre", "République tchèque", "Danemark", "Djibouti", "Dominique", "République dominicaine", "Équateur", "Égypte",
-        "Salvador", "Guinée équatoriale", "Érythrée", "Estonie", "Eswatini", "Éthiopie", "Fidji", "Finlande", "France", "Gabon",
-        "Gambie", "Géorgie", "Allemagne", "Ghana", "Grèce", "Grenade", "Guatemala", "Guinée", "Guinée-Bissau", "Guyana",
-        "Haïti", "Honduras", "Hongrie", "Islande", "Inde", "Indonésie", "Iran", "Irak", "Irlande",
-        "Italie", "Jamaïque", "Japon", "Jordanie", "Kazakhstan", "Kenya", "Kiribati", "Koweït", "Kirghizistan", "Laos",
-        "Lettonie", "Liban", "Lesotho", "Liberia", "Libye", "Liechtenstein", "Lituanie", "Luxembourg", "Madagascar", "Malawi",
-        "Malaisie", "Maldives", "Mali", "Malte", "Marshall", "Mauritanie", "Maurice", "Mexique", "Micronésie", "Moldavie",
-        "Monaco", "Mongolie", "Monténégro", "Maroc", "Mozambique", "Myanmar", "Namibie", "Nauru", "Népal", "Pays-Bas",
-        "Nouvelle-Zélande", "Nicaragua", "Niger", "Nigéria", "Corée du Nord", "Macédoine du Nord", "Norvège", "Oman", "Pakistan", "Palaos",
-        "Palestine", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pérou", "Philippines", "Pologne", "Portugal", "Qatar", "Roumanie",
-        "Russie", "Rwanda", "Saint-Christophe-et-Niévès", "Sainte-Lucie", "Saint-Vincent-et-les-Grenadines", "Samoa", "Saint-Marin", "Sao Tomé-et-Principe", "Arabie saoudite", "Sénégal",
-        "Serbie", "Seychelles", "Sierra Leone", "Singapour", "Slovaquie", "Slovénie", "Îles Salomon", "Somalie", "Afrique du Sud", "Corée du Sud",
-        "Soudan du Sud", "Espagne", "Sri Lanka", "Soudan", "Suriname", "Suède", "Suisse", "Syrie", "Taïwan", "Tadjikistan",
-        "Tanzanie", "Thaïlande", "Timor-Leste", "Togo", "Tonga", "Trinité-et-Tobago", "Tunisie", "Turquie", "Turkménistan", "Tuvalu",
-        "Ouganda", "Ukraine", "Émirats arabes unis", "Royaume-Uni", "États-Unis", "Uruguay", "Ouzbékistan", "Vanuatu", "Vatican", "Venezuela",
-        "Viêt Nam", "Yémen", "Zambie", "Zimbabwe"
+        "Afghanistan", "Albanie", "Algérie", "Andorre", "Angola", "Antigua-et-Barbuda", "Argentine",
+         "Arménie", "Australie", "Autriche","Azerbaïdjan", "Bahamas", "Bahreïn", "Bangladesh",
+          "Barbade", "Biélorussie", "Belgique", "Belize", "Bénin", "Bhoutan","Bolivie",
+           "Bosnie-Herzégovine", "Botswana", "Brésil", "Brunei", "Bulgarie", "Burkina Faso", "Burundi",
+            "Cabo Verde", "Cambodge","Cameroun", "Canada", "République centrafricaine", "Tchad", "Chili", "Chine",
+             "Colombie", "Comores", "Congo", "Costa Rica","Croatie", "Cuba", "Chypre",
+              "République tchèque", "Danemark", "Djibouti", "Dominique", "République dominicaine", "Équateur", "Égypte",
+              "Salvador", "Guinée équatoriale", "Érythrée", "Estonie", "Eswatini", "Éthiopie", "Fidji",
+               "Finlande", "France", "Gabon","Gambie", "Géorgie", "Allemagne", "Ghana", "Grèce",
+                "Grenade", "Guatemala", "Guinée", "Guinée-Bissau", "Guyana","Haïti", "Honduras",
+                 "Hongrie", "Islande", "Inde", "Indonésie", "Iran", "Irak", "Irlande",
+                 "Italie", "Jamaïque", "Japon", "Jordanie", "Kazakhstan", "Kenya", "Kiribati",
+                  "Koweït", "Kirghizistan", "Laos","Lettonie", "Liban", "Lesotho", "Liberia",
+                   "Libye", "Liechtenstein", "Lituanie", "Luxembourg", "Madagascar", "Malawi","Malaisie",
+                    "Maldives", "Mali", "Malte", "Marshall", "Mauritanie", "Maurice", "Mexique",
+                     "Micronésie", "Moldavie","Monaco", "Mongolie", "Monténégro", "Maroc", "Mozambique",
+                      "Myanmar", "Namibie", "Nauru", "Népal", "Pays-Bas","Nouvelle-Zélande", "Nicaragua",
+                       "Niger", "Nigéria", "Corée du Nord", "Macédoine du Nord", "Norvège", "Oman", "Pakistan",
+                        "Palaos","Palestine", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pérou", "Philippines",
+                         "Pologne", "Portugal", "Qatar", "Roumanie","Russie", "Rwanda", "Saint-Christophe-et-Niévès",
+                          "Sainte-Lucie", "Saint-Vincent-et-les-Grenadines", "Samoa", "Saint-Marin", "Sao Tomé-et-Principe", "Arabie saoudite", "Sénégal",
+                          "Serbie", "Seychelles", "Sierra Leone", "Singapour", "Slovaquie", "Slovénie", "Îles Salomon",
+                           "Somalie", "Afrique du Sud", "Corée du Sud","Soudan du Sud", "Espagne", "Sri Lanka", "Soudan",
+                            "Suriname", "Suède", "Suisse", "Syrie", "Taïwan", "Tadjikistan","Tanzanie",
+                             "Thaïlande", "Timor-Leste", "Togo", "Tonga", "Trinité-et-Tobago", "Tunisie", "Turquie",
+                              "Turkménistan", "Tuvalu","Ouganda", "Ukraine", "Émirats arabes unis", "Royaume-Uni", "États-Unis",
+                               "Uruguay", "Ouzbékistan", "Vanuatu", "Vatican", "Venezuela","Viêt Nam", "Yémen", "Zambie", "Zimbabwe"
     ];
-    
-    console.log(countries);
-    
+      
 }
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('type').addEventListener('change', function() {
@@ -159,6 +240,16 @@ function verif_nom(ch) {
 }
 function verif_num(ch){
     if (!(ch.charAt(0) == "2" || ch.charAt(0) == "5" || ch.charAt(0) == "9" && ch.length==8)) {
+        return false;
+    }
+}
+function verifierMotDePasse(ch) {
+    const longueurMin = 8;
+    const contientMajuscule = /[A-Z]/;
+    const contientMinuscule = /[a-z]/;
+    const contientChiffre = /[0-9]/;
+    const contientSpecial = /[!@#$%^&*(),.?":{}|<>]/;
+    if ((ch.length < longueurMin) || (!contientMajuscule.test(ch)) || (!contientMinuscule.test(ch)) || (!contientChiffre.test(ch)) || (!contientSpecial.test(ch)) ){
         return false;
     }
 }
