@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <form onsubmit="return verif()" method="post">
+    <form onsubmit="return verif()" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <label for="">classe:</label>
         <select name="cl" id="S1" class="minimal">
             <option value="">--selectionner class--</option>
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select name="NM" id="S3" class="minimal">
             <option value="">--selectionner matier--</option>
             <?php
+                include("../cnx.php");
                 while($t = mysqli_fetch_array($res)){
                     echo"<option value=''>$t[0]</option>";
                 }
