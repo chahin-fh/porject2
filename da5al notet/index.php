@@ -49,6 +49,7 @@
             <option value="">Select a name</option>
             <?php
                 include("../cnx.php");
+                $classe = $_POST['classe'];
                 $names_res = mysqli_query($cnx, "SELECT DISTINCT nom FROM personnes");
                 while ($row = mysqli_fetch_assoc($names_res)) {
                     echo '<option value="' . htmlspecialchars($row['nom']) . '">' . htmlspecialchars($row['nom']) . '</option>';
@@ -59,8 +60,6 @@
         </select>
         <input type="submit" value="Select">
     </form>
-
-    <!-- Le code PHP pour afficher les résultats sera exécuté ici -->
     <?php echo ob_get_clean(); ?>
 
 </body>
