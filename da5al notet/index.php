@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("../cnx.php");
     $classe = $_POST['classe'];
     if (!empty($classe)) {
-        $res = mysqli_query($cnx, "SELECT nom FROM personne WHERE niveau_etud = '$classe'");
+        $res = mysqli_query($cnx, "SELECT nom FROM personnes WHERE niveau_etud = '$classe'");
         if ($res) {
             echo "<ul>";
             while ($row = mysqli_fetch_assoc($res)) {
@@ -36,9 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="">Select a class</option>
             <?php
             include("../cnx.php");
-            $classes_res = mysqli_query($cnx, "SELECT DISTINCT niveau_etud FROM personne");
+            $classes_res = mysqli_query($cnx, "SELECT DISTINCT classe FROM personnes");
             while ($row = mysqli_fetch_assoc($classes_res)) {
-                echo '<option value="' . htmlspecialchars($row['niveau_etud']) . '">' . htmlspecialchars($row['niveau_etud']) . '</option>';
+                echo '<option value="' . htmlspecialchars($row['classe']) . '">' . htmlspecialchars($row['classe']) . '</option>';
             }
             mysqli_free_result($classes_res);
             mysqli_close($cnx);
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="">Select a name</option>
             <?php
             include("../cnx.php");
-            $names_res = mysqli_query($cnx, "SELECT DISTINCT nom FROM personne");
+            $names_res = mysqli_query($cnx, "SELECT DISTINCT nom FROM personnes");
             while ($row = mysqli_fetch_assoc($names_res)) {
                 echo '<option value="' . htmlspecialchars($row['nom']) . '">' . htmlspecialchars($row['nom']) . '</option>';
             }
