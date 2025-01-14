@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
             mysqli_query($cnx, $query) or die("Error: " . mysqli_error($cnx));
         }
     }
-    echo "Data inserted successfully!";
+    header("Refresh:0; url=index.php");
     mysqli_close($cnx);
 }
 ?>
