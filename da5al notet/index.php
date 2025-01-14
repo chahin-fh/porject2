@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("../cnx.php");
     $classe = $_POST['classe'];
     if (!empty($classe)) {
-        $res = mysqli_query($cnx, "SELECT nom FROM personnes WHERE classe = '$classe'");
+        $res = mysqli_query($cnx, "SELECT nom FROM personnes WHERE niveau_etud = '$classe'");
         if ($res) {
             echo "<ul>";
             while ($row = mysqli_fetch_assoc($res)) {
