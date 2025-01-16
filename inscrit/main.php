@@ -24,10 +24,10 @@ if($nb>0){
     $classe = $a . $department . "1";
 }
 $resE = mysqli_query($cnx, "INSERT INTO personnes (typ, nom , pass , email, num_tell, adress, ville, code_p, paye, department, date_nais, niveau_etud, date_inscrit,classe) VALUES ('$type', '$name','$password', '$email', '$phone', '$address', '$city', '$postal_code', '$country', '$department', '$date_of_birth', '$academic_level', '$d' ,'$classe');") or die("l24");
-header("location:../connexion/index.php");
+header("location:../connexion/main1.php");
 }elseif($type === "Professeur"){
     $resP = mysqli_query($cnx, "INSERT INTO personnes (typ, nom , pass , email, num_tell, adress, ville, code_p, paye, department,titre,date_deb) VALUES ('$type', '$name','$password' ,  '$email', '$phone', '$address', '$city', '$postal_code', '$country', '$department', '$academic_title', '$d');") or die("l24");
-    header("location:../connexion/index.php");
+    header("location:../connexion/main1.php");
 }
 
 ?>
